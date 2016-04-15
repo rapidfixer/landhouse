@@ -50,6 +50,14 @@ module.exports = function(_path) {
     // modules resolvers
     module: {
       loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel',
+          query: {
+            presets: ['es2015'],
+            plugins: ['transform-object-assign']
+          }
+        },
         { test: /\.jade$/, loader: 'jade-loader' },
         { test: /\.styl$/, loader: TextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader') },
         { test: /\.(css|ttf|eot|woff|woff2|png|ico|jpg|jpeg|gif|svg)$/i, loaders: ['file?context=' + rootAssetPath + '&name=assets/static/[ext]/[name].[hash].[ext]'] },

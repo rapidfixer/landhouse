@@ -62,7 +62,7 @@ let MapObject = class MapObject {
 
     // move to point
     this.group.move(setts.posX, setts.posY);
-    return this.group;
+    return this;
   }
 
   // setHover() {
