@@ -3,16 +3,25 @@
 
 // Depends
 var $ = require('jquery');
-
-// Modules
-var Boilerplate = require('_modules/boilerplate');
+const VectorMap = require('_modules/vectormap');
 
 // Stylesheet entrypoint
 require('_stylesheets/app.styl');
 
 // Are you ready?
 $(function() {
-  new Boilerplate();
-  // big tnhx for this plugin
-  $('#fullpage').fullpage();
+  var vectorMap = new VectorMap('#vector-map', [
+    {
+      posX: 40,
+      posY: 50
+    },
+    {
+      posX: 220,
+      posY: 300
+    },
+    {
+      posX: 100,
+      posY: 340
+    }
+  ]);
 });
