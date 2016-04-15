@@ -6,20 +6,21 @@ const defaults = {
   posX: 0,
   posY: 0,
   polygon: '0,0 20,0 20,20 0,20',
-  circleRadius: 15,
+  circleRadius: 5,
   free: true,
-  freeColor: 'B2D023',
-  busyColor: 'DF6D52',
+  freeColor: '#B2D023',
+  busyColor: '#DF6D52',
   freeClass: 'map-object_free',
   text: '0',
-  borderColor: 'F7E902',
+  borderColor: '#F7E902',
   borderWidth: 3,
-  borderColorHover: 'FAFAFA'
+  borderColorHover: '#FAFAFA'
 };
 
 let MapObject = class MapObject {
 
   // params = {
+  // posX/posY, - положение полигона относительно левого верхнего угла карты
   //   polygon: 'x,y x,y x,y', - координаты углов участка
   //   free: true/false, - свободен или занят
   //   text: '' - текст внутри
@@ -39,18 +40,21 @@ let MapObject = class MapObject {
       .stroke({
         width: setts.borderWidth,
         color: setts.borderColor
+      })
+      .fill({
+        color: 'transparent'
       });
     let center = {
-      x: this.group.first().bbox.cx,
-      y: this.group.first().bbox.cy
+      x: this.group.first().bbox().cx,
+      y: this.group.first().bbox().cy
     };
     // add marker
     this.group
       .circle(setts.circleRadius)
+      .center(center.x, center.y)
       .fill({
         color: setts.free ? setts.freeColor : setts.busyColor
-      })
-      .center(center.x, center.y);
+      });
     // add text
     // set events
     // this.group.mouseover(() => {

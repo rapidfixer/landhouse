@@ -10,7 +10,7 @@ require('_stylesheets/app.styl');
 
 // Are you ready?
 $(function() {
-  var vectorMap = new VectorMap('#vector-map', [
+  var vectorMap = new VectorMap(document.getElementById('vector-map'), [
     {
       posX: 40,
       posY: 50
