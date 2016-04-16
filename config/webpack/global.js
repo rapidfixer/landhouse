@@ -77,10 +77,22 @@ module.exports = function(_path) {
       }),
       // create instance for entrypoint index.html building
       new HtmlPlugin({
-        title: 'Rambler Webpack Dev Boilerplate',
+        title: 'Landhouse',
         chunks: ['application', 'vendors'],
         filename: 'index.html',
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'index.html')
+      }),
+      new HtmlPlugin({
+        title: 'Contacts',
+        chunks: ['application', 'vendors'],
+        filename: 'contacts.html',
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'contacts.html')
+      }),
+      new HtmlPlugin({
+        title: 'Map',
+        chunks: ['application', 'vendors'],
+        filename: 'map.html',
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'map.html')
       })
     ]
   };
