@@ -1,0 +1,51 @@
+.b-content
+  width $page-width
+  margin 64px auto
+  &-topline
+    height 1px
+    background-color #d4d9df
+  &_wide
+    fullright()
+  &__wrapper
+    width $page-width
+.b-headline
+  background-color white
+  padding-right 50px
+  margin-bottom 20px
+  &_lined
+    position relative
+    width 256px
+    top -14px
+  &__header
+    margin-bottom 10px
+    font-size 38px
+    font-family "DaxlinePro-Light"
+    color rgb(70, 83, 97)
+    text-transform uppercase
+    line-height 1
+  &__subheader
+    font-size 18px
+    font-family "DaxlinePro-Light"
+    color rgb(124, 151, 172)
+    text-transform uppercase
+    line-height 1.611
+.b-show-more
+  display block
+  width 110px
+  box-sizing border-box
+  padding 8px 0 7px 16px
+  position relative
+  font-size 9px
+  line-height 1
+  font-family "DaxlinePro-Light";
+  color rgb(70, 83, 97)
+  text-transform uppercase
+  background-color #e6e7ec
+  &:after
+    content: ''
+    position absolute
+    right 13px
+    top 7px
+    width 12px
+    height 10px
+    background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAMAAAC38k/IAAAAKlBMVEUAAAC7vse7vse7vse7vse7vse7vse7vse7vse7vse7vse7vse7vse7vseHjXd5AAAADXRSTlMADA07Pj9C0+Hj5Ov1QS0FMAAAADBJREFUeAFjgABGBgRg4mZB4rGg8Fi5WdF5HLwwwMMEl2HmYkNiMyPYnAg2AzuYDQBB4gEXSa675QAAAABJRU5ErkJggg==')
