@@ -1,6 +1,7 @@
 .b-content
   width $page-width
   margin 64px auto
+  clearfix()
   &-topline
     height 1px
     background-color #d4d9df
@@ -8,6 +9,31 @@
     fullright()
   &__wrapper
     width $page-width
+  &__block
+    float left
+    margin-left $lefttab-width
+    width 745px
+    height 310px
+    padding 10px 0 0 20px
+    overflow scroll
+    font-size 14px
+    font-family $arialFontFamily
+    color rgb(77, 85, 98)
+    line-height 1.2
+    p
+      margin-bottom 20px
+      padding-right 32px
+  &__headline
+    float left
+    width 330px
+    padding-left 24px
+    &-header
+      font-size 23px
+      font-family $daxlineLightFontFamily
+      color rgb(70, 83, 97)
+      text-transform uppercase
+      line-height: 1.261;
+
 .b-headline-big
   background-color white
   padding-right 50px
@@ -19,13 +45,13 @@
   &__header
     margin-bottom 10px
     font-size 38px
-    font-family "DaxlinePro-Light"
+    font-family $daxlineLightFontFamily
     color rgb(70, 83, 97)
     text-transform uppercase
     line-height 1
   &__subheader
     font-size 18px
-    font-family "DaxlinePro-Light"
+    font-family $daxlineLightFontFamily
     color rgb(124, 151, 172)
     text-transform uppercase
     line-height 1.611
@@ -37,7 +63,7 @@
   position relative
   font-size 9px
   line-height 1
-  font-family "DaxlinePro-Light";
+  font-family $daxlineLightFontFamily
   color rgb(70, 83, 97)
   text-transform uppercase
   background-color #e6e7ec

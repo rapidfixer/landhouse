@@ -1,16 +1,6 @@
 .b-wide
   background $wide-color
-  &-content
-    width $page-width
-    margin 0 auto
-  &-gallery
-    &__content
-      width $page-width
-      margin 0 auto
-      overflow visible
-    //&__prev
-    //&__next
-  &-contacts
+  &_contacts
     position relative
     height 660px
     margin-bottom 195px
@@ -18,3 +8,13 @@
     background-size cover
     background-position center center
     background-repeat no-repeat
+  &_about
+    height 460px
+  &-content
+    width $page-width
+    margin 0 auto
+  &-wrapper
+    position relative
+    height 100%
+    fullright()
+    padding-left $lefttab-width
