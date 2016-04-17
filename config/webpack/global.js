@@ -99,6 +99,12 @@ module.exports = function(_path) {
         chunks: ['application', 'vendors'],
         filename: 'about.html',
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'about.html')
+      }),
+      new HtmlPlugin({
+        title: 'About',
+        chunks: ['application', 'vendors'],
+        filename: 'googlemap.html',
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'googlemap.html')
       })
     ]
   };

@@ -1,0 +1,28 @@
+.b-google-map
+  height 854px
+  position relative
+  iframe
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+  &__overlay
+    position absolute
+    height 100%
+    top 0
+    left 0
+    width calc(((100% - 960px) / 2) + 330px)
+  &__darkoverlay
+    height 460px
+    background-color rgba(30,41,59,0.8)
+  &__overlay-info
+    width $lefttab-width
+    float right
+    overflow scroll
+    height 346px
+    padding 30px 30px 17px 30px
+    font-size 14px
+    font-family $arialFontFamily
+    color rgb(77, 85, 98)
+    background-color white
