@@ -11,18 +11,33 @@ let VectorMap = class VectorMap {
     this.map = SVG(elem).size('100%', '100%');
     this.objects = [];
     objects.forEach((objParams) => {
-      let params = objParams;
-      objects.push(new MapObject(params, this.map));
+      objects.push(new MapObject(objParams, this.map));
     });
+
     // debug info
-    this.$debug = $('<div id="vector-map__helper"></div>').appendTo($(elem));
-    this.map.mousemove((e) => {
-      this.showCoords(e);
-    });
+    if (window.vectorMapDebug) {
+      this.debugPointSet = false;
+      this.$debug = $('<div id="vector-map__helper"></div>').appendTo($(elem));
+      this.map.click((e) => {
+        this.debugPointSet = !this.debugPointSet;
+        this.debugPointData = {
+          x: e.offsetX,
+          y: e.offsetY
+        };
+        this.$debug.toggleClass('debug-mode');
+      });
+      this.map.mousemove((e) => {
+        this.showCoords(e);
+      });
+    }
   }
 
   showCoords(e) {
-    this.$debug.html('X: ' + e.offsetX + ', Y: ' + e.offsetY);
+    if (this.debugPointSet) {
+      this.$debug.html('dX: ' + (-(this.debugPointData.x - e.offsetX)) + ', dY: ' + (-(this.debugPointData.y - e.offsetY)));
+    } else {
+      this.$debug.html('X: ' + e.offsetX + ', Y: ' + e.offsetY);
+    }
   }
 };
 

@@ -12,16 +12,25 @@ require('_stylesheets/app.styl');
 $(function() {
   var vectorMap = new VectorMap(document.getElementById('vector-map'), [
     {
-      posX: 40,
-      posY: 50
+      polygon: '0,0 47,12 38,70 -16,60',
+      posX: 263,
+      posY: 239,
+      num: 13
     },
     {
-      posX: 220,
-      posY: 300
+      polygon: '0,0 51,5 44,64 -7,58',
+      posX: 364,
+      posY: 257,
+      free: false,
+      num: 7
     },
     {
-      posX: 100,
-      posY: 340
+      polygon: '0,0 19,-44 52,-31 87,-35 129,-9 126,16 62,14',
+      posX: 181,
+      posY: 421,
+      num: 6,
+      text: '6',
+      borderColor: 'red'
     }
   ]);
 });

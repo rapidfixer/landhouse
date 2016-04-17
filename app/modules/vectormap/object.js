@@ -6,12 +6,11 @@ const defaults = {
   posX: 0,
   posY: 0,
   polygon: '0,0 20,0 20,20 0,20',
-  circleRadius: 5,
+  circleDiameter: 32,
   free: true,
   freeColor: '#B2D023',
   busyColor: '#DF6D52',
-  freeClass: 'map-object_free',
-  text: '0',
+  num: 1,
   borderColor: '#F7E902',
   borderWidth: 3,
   borderColorHover: '#FAFAFA'
@@ -30,12 +29,18 @@ let MapObject = class MapObject {
   // }
 
   constructor(params, parent) {
-    this.settings = Object.assign(defaults, params);
+    this.settings = {};
+    Object.assign(this.settings, defaults, params);
     this.parent = parent;
     let setts = this.settings;
-    this.group = this.parent.group();
+    this.group = this.parent
+      .group()
+      .style({
+        cursor: 'pointer'
+      })
+      ;
     // create borders
-    this.group
+    this.borderPoly = this.group
       .polygon(setts.polygon)
       .stroke({
         width: setts.borderWidth,
@@ -50,32 +55,42 @@ let MapObject = class MapObject {
     };
     // add marker
     this.group
-      .circle(setts.circleRadius)
+      .circle(setts.circleDiameter)
       .center(center.x, center.y)
       .fill({
         color: setts.free ? setts.freeColor : setts.busyColor
       });
-    // add text
+    // add number
+    this.group
+      .text((setts.text ? setts.text : setts.num) + '\n')
+      .font({
+        family: 'Arial',
+        size: 20,
+        'font-weight': 'bold',
+        'fill': '#fff'
+      })
+      .center(center.x, center.y);
     // set events
-    // this.group.mouseover(() => {
-    //   this.setHover();
-    // });
-    // this.group.mouseout(() => {
-    //   this.removeHover();
-    // });
+    this.group.click(() => {
+      this.parent.fire('show.vectormap', {num: this.settings.num});
+    });
+
+    this.group.mouseover(() => {
+      this.borderPoly.stroke({
+        color: setts.borderColorHover
+      });
+    });
+
+    this.group.mouseout(() => {
+      this.borderPoly.stroke({
+        color: setts.borderColor
+      });
+    });
 
     // move to point
     this.group.move(setts.posX, setts.posY);
     return this;
   }
-
-  // setHover() {
-  //   this.group.
-  // }
-
-  // removeHover() {
-  //   this.group.
-  // }
 
 };
 
