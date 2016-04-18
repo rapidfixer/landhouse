@@ -3,5 +3,8 @@ node_modules/
 tmp/
 manifest.json
 *.log
-dist/
+dist/*.html
+dist/assets/css
+dist/assets/js
+dist/assets/static
 testing/

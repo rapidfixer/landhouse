@@ -23,6 +23,7 @@ let MapObject = class MapObject {
   //   polygon: 'x,y x,y x,y', - координаты углов участка
   //   free: true/false, - свободен или занят
   //   text: '' - текст внутри
+  //   num: номер объекта в массиве объектов (для показа инфо), считается с единицы
   //   borderColor: цвет границы
   //   borderWidth: ширина границы
   //   borderColorHover: цвет границы при ховере
