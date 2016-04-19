@@ -27,18 +27,34 @@
 .b-leftmenu
   margin-top 40px
   &__item
+    display block
+    position relative
     list-style none
+    height 44px
     a
       display inline-block
+      float left
       box-sizing border-box
       height 44px
       padding 15px 0 16px
+      margin-right 23px
       font-size 13px
       line-height 1
       font-family $daxlineLightFontFamily
       color white
       text-transform uppercase
       text-decoration none
-    &_active a
-      color #a4a9af
+    &_active
+      &:after
+        content ''
+        display block
+        width auto
+        overflow hidden
+        height 44px
+        background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAsCAMAAACT+SJTAAAABlBMVEUAAABNVWK5VQ45AAAAAXRSTlMAQObYZgAAAA5JREFUeAFjIB4wMpAAAACFAAJkXq3qAAAAAElFTkSuQmCC')
+        background-position 23px center
+        background-repeat repeat-x
+
+      a
+        color #a4a9af
   

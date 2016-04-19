@@ -1,0 +1,79 @@
+.b-documents
+  position relative
+  width 688px
+  top 20px
+  left 20px
+  background-color white
+  padding 35px 0 35px 35px
+  &-header
+    height 23px
+    lined(23px)
+    h3
+      float left
+      margin-right 23px
+  &-text
+    padding 35px 35px 12px 0
+    margin-bottom 30px
+  &-box
+    position relative
+    padding 22px 200px 0 61px
+    margin-right 30px
+    border 1px solid #d3d7d8
+    overflow hidden
+    // doc icon
+    &:before
+      content ''
+      position absolute
+      display block
+      width 22px
+      height 23px
+      left 17px
+      top 16px
+      background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAXCAMAAAA4Nk+sAAAABlBMVEUAAACMkZdLeeaXAAAAAXRSTlMAQObYZgAAAB1JREFUeAFjYMQKSBdmQAMEhRHayRZGAaNWUiUuAVDiAUVVijeIAAAAAElFTkSuQmCC');
+    &_collapsed
+      height 60px
+      margin-bottom 11px
+    &_open
+      border-width 2px
+      margin-bottom 21px
+    &__header
+      display inline-block
+      font-size 15px
+      font-family $arialFontFamily
+      color rgb(77, 85, 98)
+      margin-bottom 30px
+    &__trigger
+      position absolute
+      right 20px
+      top 20px
+      width 31px
+      height 17px
+      cursor pointer
+      .b-documents-box_collapsed &
+        background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAARCAMAAAASeod7AAAAJ1BMVEUAAACpqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq7aNm5YAAAADXRSTlMAHiE+P0BCQ1h1rev1TntDaQAAAExJREFUeAF9yskNwCAQxVCThSyk/3ojjtbX4Ksfb6euQR812McWQPuEBN4JtAugDZeBt4G3Qb0NvA1yG+QWmPuAGuQWeFYb7m+5oeF+wmICeoC+m8EAAAAASUVORK5CYII=')
+      .b-documents-box_open &
+        background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAARCAMAAAASeod7AAAAJ1BMVEUAAACpqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq6pqq7aNm5YAAAADXRSTlMAHiA+P0BCQ1h2rev1nUAzRwAAAEtJREFUeAF9yrsRhFAMxdD7dsF8TP/1kilgRlZ6lE8rY//nHLmvron3VNfEkQG2AWYwTo4uZwZlBmEGYQZ4S2SAZYBt+MEyrMSH+wV7oQJ54qB60AAAAABJRU5ErkJggg==')
+    &-doc
+      position relative
+      display block
+      padding-left 30px
+      padding-bottom 30px
+      font-family $daxlineLightFontFamily
+      line-height 1.2
+      text-decoration none
+      &:before
+        content ''
+        position absolute
+        left 0
+        top 0
+        display block
+        width 20px
+        height 22px
+        background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAMAAAD3n0w0AAABvFBMVEUAAACAgICBgYGCgoKDg4OEhISOjo6dnZ2enp6urq6ysrK0tLS2tra4uLi5ubm6urq7u7u/v72/v7/AwMDAwMLBwcHCwsLGAgPLy8vMAADMAAHMAAPMzMzNAADNAAPNAATNAQLNAwPNzc3OAADOAATOAAXOAQDOAwDPAADPAAPPAQHPAgDQAADQAALQ0NDRAALRAAPRAAXRAQDSAQDT09PV1dXW1tba2trh4eHi4uLjUlXjU1PjVVHjVk/jV1jkVVHkY13lVVTlX17lYVzleHXl5eXmdnTmeXTm5ubnc3PndnDobGzobmnodHTodnbod3Po6OjpdnnpgYDp6enqXmHq6urra2jrbmrr6+vsamjsfn3sions7Ozta2nt7e3uhYnu7u7va2bv7+/wkpDw8PDxnJ/x8fHykI3y8vLzm5fz8/P0mpr2mJj2nJz6+//6/Pv6/v37+/v7+/37/P77//z7///8/Pz8/ff8/vv8///9/f39/f/9//r9//z+/P3+/fv+/vz+/v7+/v/+//r+//v+//3+////+/z//fz//f3//f7//f///vv//vz//v3//v////r///v///3///8mMiiMAAABWklEQVR42nWRZzvDYBSGoyg1ilTtWjWC2FVKbbV3hSIiKqL2rBHzRWMULz1/2NuSyxfu8+E8130959Oh4A/+laKNpk0EY41bAUDf0jbojpAERk7RmjTHuzlCEoJkr9Y0CR5e4HlPAsnmTUA/UhB4QRTNJKNm+Gl6CZIoOjISU1JprSlFkL2yV5JMmvTJsiyFxyf76Mi5yloYNrsqu5ZhSy2VmSV1x0CpIcsaXN1tYTjf2AneB7erVaCwWrH+PPcyCysjeDSwNL/KBMOybPH2+nzmvacL9z59+pcbAkA9qAUL/vZuZ6ijTe3Eztbp/Eug3tTyMTw11Pf6gsf71eGJAQaT8xBbaK23MrmMNafRWm3JKQoBBTiQdrN3cna4v3t6dHHwmP6BiXTkxSMECigIECEur4XIyWKDPjoqVhdN0MXoDVkcUAgAAe9xNdntdpfAod8fociAEo5kfwECoq4/V+I/ewAAAABJRU5ErkJggg==')
+      &__name
+        font-size 13px
+        color rgb(120, 194, 71)
+      &__size
+        display block
+        font-size 14px
+        color rgb(167, 175, 182)
