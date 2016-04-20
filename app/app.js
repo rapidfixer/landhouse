@@ -10,6 +10,7 @@ require('_stylesheets/app.styl');
 
 // Are you ready?
 $(function() {
+  // window.vectorMapDebug = true;
   var vectorMap = new VectorMap(document.getElementById('vector-map'), [
     {
       polygon: '0,0 47,12 38,70 -16,60',

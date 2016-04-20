@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --progress --port 8090",
     "build": "rm -rf dist/* && NODE_ENV=production webpack -p --colors",
+    "build-nomin": "rm -rf dist/* && NODE_ENV=production webpack --colors",
     "build-test": "node .bin/build-test",
     "test": "NODE_ENV=tdd npm run build-test",
     "test-ci": "NODE_ENV=test-ci testem ci"
@@ -53,6 +54,7 @@
     "backbone": "1.2.0",
     "fullpage.js": "2.6.5",
     "jquery": "2.1.4",
+    "svgjs": "^2.2.5",
     "underscore": "1.8.3"
   }
 }
