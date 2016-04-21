@@ -1,24 +1,26 @@
 'use strict';
 
 const params = {
-  center: {lat: 44.540, lng: -78.546},
+  center: {lat: 55.530291, lng: 37.091198},
+  markerPos: {lat: 55.530397, lng: 37.116362},
   contour: [
-    {lat: 37.772, lng: -122.214},
-    {lat: 21.291, lng: -157.821},
-    {lat: -18.142, lng: 178.431},
-    {lat: -27.467, lng: 153.027}
+    {lat: 55.534140, lng: 37.111065},
+    {lat: 55.533600, lng: 37.119435},
+    {lat: 55.531782, lng: 37.105785},
+    {lat: 55.534140, lng: 37.111065}
   ],
-  routeStart: {lat: 44.540, lng: -78.546},
-  routeEnd: {lat: 44.540, lng: -78.546}
+  routeStart: {lat: 55.542680, lng: 37.097494},
+  routeEnd: {lat: 55.530397, lng: 37.116362}
 };
 
 module.exports = function() {
-  var mapElem = document.getElementById('#google-map');
+  var mapElem = document.getElementById('google-map');
   if (!mapElem) return;
   var map = new google.maps.Map(mapElem, {
     center: params.center,
-    zoom: 8,
-    disableDefaultUI: true
+    zoom: 14,
+    disableDefaultUI: true,
+    mapTypeId: google.maps.MapTypeId.HYBRID
   });
   // Contours
   var area = new google.maps.Polyline({
@@ -30,16 +32,19 @@ module.exports = function() {
   });
   // show route
   var directionsService = new google.maps.DirectionsService();
-  var directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+    preserveViewport: true,
+    suppressMarkers: true
+  });
   // add marker
-  var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
   new google.maps.Marker({
-    position: myLatLng,
+    position: params.markerPos,
     map: map,
-    icon: iconBase + 'schools_maps.png'
+    icon: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle.png'
   });
 
   area.setMap(map);
+  directionsDisplay.setMap(map);
   directionsService.route({
     origin: params.routeStart,
     destination: params.routeEnd,
@@ -49,6 +54,5 @@ module.exports = function() {
       directionsDisplay.setDirections(result);
     }
   });
-  directionsDisplay.setMap(map);
   return map;
 };
