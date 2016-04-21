@@ -4,14 +4,15 @@
 // Depends
 var $ = require('jquery');
 const VectorMap = require('_modules/vectormap');
+const gallery = require('_modules/gallery');
 
 // Stylesheet entrypoint
 require('_stylesheets/app.styl');
 
 // Are you ready?
 $(function() {
-  // window.vectorMapDebug = true;
-  var vectorMap = new VectorMap(document.getElementById('vector-map'), [
+  var $galleryCarousel = gallery('.js-gallery-mapinfo');
+  window.vectorMap = new VectorMap(document.getElementById('vector-map'), [
     {
       polygon: '0,0 47,12 38,70 -16,60',
       posX: 263,

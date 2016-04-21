@@ -1,5 +1,6 @@
 .b-gallery
   position relative
+  overflow hidden
   height 100%
   //&__content
   &_960 .b-gallery__content
@@ -28,3 +29,22 @@
   &_mapinfo
     width 250px
     height 200px
+    .b-gallery
+      &__prev
+      &__next
+        width 39px
+        height 39px
+        margin-top -19px
+        background-size 12px 22px
+      &__prev
+        left 20px
+      &__next
+        right 20px
+  &__list
+    width 20000em
+    position relative
+    list-style none
+    margin 0
+    padding 0
+  &__item
+    float left

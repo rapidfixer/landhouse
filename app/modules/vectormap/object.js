@@ -73,7 +73,7 @@ let MapObject = class MapObject {
       .center(center.x, center.y);
     // set events
     this.group.click(() => {
-      this.parent.fire('show.vectormap', {num: this.settings.num});
+      this.parent.fire('show', {num: this.settings.num});
     });
 
     this.group.mouseover(() => {
