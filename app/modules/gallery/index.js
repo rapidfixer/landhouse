@@ -13,11 +13,15 @@ module.exports = function(selector, params = {}) {
   Object.assign(settings, defaults, params);
   let $carousel = $(selector);
   $carousel.jcarousel(settings);
-  $carousel.find('.js-gallery-prev')
+  let $carouselWrap = $carousel.closest('.js-gallery-wrap');
+  $carouselWrap = $carouselWrap.length
+    ? $carouselWrap
+    : $carousel;
+  $carouselWrap.find('.js-gallery-prev')
     .jcarouselControl({
       target: '-=1'
     });
-  $carousel.find('.js-gallery-next')
+  $carouselWrap.find('.js-gallery-next')
     .jcarouselControl({
       target: '+=1'
     });

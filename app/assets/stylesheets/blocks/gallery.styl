@@ -2,11 +2,8 @@
   position relative
   overflow hidden
   height 100%
-  //&__content
-  &_960 .b-gallery__content
-    width $page-width
-    margin 0 auto
-    overflow visible
+  &-wrapper
+    position relative
   &__prev
   &__next
     position absolute
@@ -26,6 +23,20 @@
   &__next
     right 16px
     background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAjCAMAAABB9MFTAAAAJ1BMVEUAAAChpqKhpqKhpqKhpqKhpqKhpqKhpqKhpqKhpqKhpqKhpqKhpqIZ/1gzAAAADXRSTlMAHiAhPj9AQlV2rev1jb14YAAAACxJREFUeAFj4GJnwADs3GQLjgpyYApy8jCjC7Fwsw03IVaqCTEhhBCAEUMEAGs5AwUtC5+DAAAAAElFTkSuQmCC')
+  &_main
+    .b-gallery
+      &__list
+        width $page-width
+        margin 0 auto
+        overflow hidden
+    ~ .b-gallery__prev
+    ~ .b-gallery__next
+      background-color transparent
+      background-size 30px 60px
+    ~ .b-gallery__prev
+      left 145px
+    ~ .b-gallery__next
+      right 145px
   &_mapinfo
     width 250px
     height 200px
@@ -46,5 +57,8 @@
     list-style none
     margin 0
     padding 0
+    height 100%
   &__item
+    display block
+    height 100%
     float left

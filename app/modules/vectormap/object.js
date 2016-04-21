@@ -1,7 +1,8 @@
 'use strict';
 
 // Depends
-const SVG = require('svgjs');
+window.SVG = require('svgjs');
+require('../../vendors/svgjs.filter')(window);
 const defaults = {
   posX: 0,
   posY: 0,
@@ -50,27 +51,27 @@ let MapObject = class MapObject {
       .fill({
         color: 'transparent'
       });
-    let center = {
+    this.center = {
       x: this.group.first().bbox().cx,
       y: this.group.first().bbox().cy
     };
-    // add marker
+    // Add marker
+    let markerText = (setts.text ? setts.text : setts.num) + '';
+    if (markerText.length > 2) {
+      this.styleMarker(this.group.rect(1.8 * setts.circleDiameter, setts.circleDiameter * 0.85).radius(setts.circleDiameter / 2));
+    } else {
+      this.styleMarker(this.group.circle(setts.circleDiameter));
+    }
+    // add number/text
     this.group
-      .circle(setts.circleDiameter)
-      .center(center.x, center.y)
-      .fill({
-        color: setts.free ? setts.freeColor : setts.busyColor
-      });
-    // add number
-    this.group
-      .text((setts.text ? setts.text : setts.num) + '\n')
+      .text(markerText + '\n')
       .font({
         family: 'Arial',
         size: 20,
         'font-weight': 'bold',
         'fill': '#fff'
       })
-      .center(center.x, center.y);
+      .center(this.center.x, this.center.y);
     // set events
     this.group.click((e) => {
       e.stopPropagation();
@@ -92,6 +93,22 @@ let MapObject = class MapObject {
     // move to point
     this.group.move(setts.posX, setts.posY);
     return this;
+  }
+
+  // add marker with shadow
+  styleMarker(elem) {
+    elem.center(this.center.x, this.center.y)
+      .fill({
+        color: this.settings.free ? this.settings.freeColor : this.settings.busyColor
+      })
+      .filter(function(add) {
+        var blur = add
+          .offset(0, 7)
+          .in(add.sourceAlpha)
+          .gaussianBlur(3);
+        add.blend(add.source, blur);
+        this.size('180%', '180%');
+      });
   }
 
 };

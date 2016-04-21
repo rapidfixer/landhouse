@@ -11,9 +11,6 @@
   </head>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <body id='body'>
-    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-      <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-    {% } %}
     <header>
       <a href="#" class="b-logo"></a>
       <div class="b-topmenu">
@@ -39,11 +36,23 @@
             </ul>
           </div>
         </div>
-        <div class="b-gallery">
-          <div class="b-gallery__content"></div>
-          <img src="http://loremflickr.com/1200/460" alt="">
-          <div class="b-gallery__prev"></div>
-          <div class="b-gallery__next"></div>
+        <div class="b-gallery js-gallery">
+          <ul class="b-gallery__list">
+            <li class="b-gallery__item">
+              <img src="http://loremflickr.com/1200/460/sun" alt="">
+            </li>
+            <li class="b-gallery__item">
+              <img src="http://loremflickr.com/1200/460/grass" alt="">
+            </li>
+            <li class="b-gallery__item">
+              <img src="http://loremflickr.com/1200/460/sunshine" alt="">
+            </li>
+            <li class="b-gallery__item">
+              <img src="http://loremflickr.com/1200/40/cocaine" alt="">
+            </li>
+          </ul>
+          <div class="b-gallery__prev js-gallery-prev"></div>
+          <div class="b-gallery__next js-gallery-next"></div>
         </div>
       </div>
     </div>
@@ -59,5 +68,8 @@
     <footer class="b-footer">
       <div class="b-footer-text">Google, 2016 - Условия использвания</div>
     </footer>
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+      <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+    {% } %}
   </body>
 </html>

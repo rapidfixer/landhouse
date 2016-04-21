@@ -11,6 +11,7 @@ const infoArrElemClass = '.js-mapinfo-item';
 let VectorMap = class VectorMap {
 
   constructor(elem, objects) {
+    if (!elem) return;
     this.map = SVG(elem).size('100%', '100%');
     this.objects = [];
     objects.forEach((objParams) => {
@@ -20,7 +21,7 @@ let VectorMap = class VectorMap {
     this.map.on('show', (e) => {
       this.showInfo(e);
     });
-    this.map.on('click', (e) => {
+    this.map.on('click', () => {
       this.hideInfo();
     });
   }

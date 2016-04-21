@@ -11,9 +11,6 @@
   </head>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <body id='body'>
-    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-      <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-    {% } %}
     <header>
       <a href="#" class="b-logo"></a>
       <div class="b-topmenu">
@@ -68,7 +65,7 @@
               </a>
             </div>
           </div>
-          <div class="b-documents-box b-documents-box_open">
+          <div class="b-documents-box">
             <div class="b-documents-box__trigger"></div>
             <span class="b-documents-box__header">Проектная документация</span>
             <div class="b-documents-box__wrap">
@@ -140,5 +137,8 @@
     <footer class="b-footer">
       <div class="b-footer-text">Google, 2016 - Условия использвания</div>
     </footer>
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+      <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+    {% } %}
   </body>
 </html>
