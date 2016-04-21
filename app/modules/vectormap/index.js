@@ -20,6 +20,9 @@ let VectorMap = class VectorMap {
     this.map.on('show', (e) => {
       this.showInfo(e);
     });
+    this.map.on('click', (e) => {
+      this.hideInfo();
+    });
   }
 
   hideInfo() {

@@ -72,7 +72,8 @@ let MapObject = class MapObject {
       })
       .center(center.x, center.y);
     // set events
-    this.group.click(() => {
+    this.group.click((e) => {
+      e.stopPropagation();
       this.parent.fire('show', {num: this.settings.num});
     });
 
