@@ -3,6 +3,7 @@
 
 // Depends
 var $ = require('jquery');
+require('malihu-custom-scrollbar-plugin')($);
 const VectorMap = require('_modules/vectormap');
 const gallery = require('_modules/gallery');
 const googleMap = require('_modules/googlemap');
@@ -37,6 +38,18 @@ $(function() {
     }
   ]);
   googleMap();
+
+  $.mCustomScrollbar.defaults.axis = 'y';
+  $('.js-custom-scroll').mCustomScrollbar({
+    alwaysShowScrollbar: 1,
+    scrollInertia: 0,
+    mouseWheel: {
+      enable: true
+    },
+    theme: 'dark-2'
+  });
+
+  // Documents box trigger
   $('.b-documents-box__trigger').on('click', function() {
     $(this).parent().toggleClass('b-documents-box_collapsed');
   });
