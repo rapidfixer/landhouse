@@ -1,7 +1,7 @@
 'use strict';
 
 const params = {
-  center: {lat: 55.530291, lng: 37.091198},
+  center: {lat: 55.534291, lng: 37.091198},
   markerPos: {lat: 55.530397, lng: 37.116362},
   contour: [
     {lat: 55.534140, lng: 37.111065},
@@ -40,7 +40,8 @@ module.exports = function() {
   new google.maps.Marker({
     position: params.markerPos,
     map: map,
-    icon: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle.png'
+
+    icon: 'http://s32.postimg.org/hhb1stupd/map_marker.png'
   });
 
   area.setMap(map);
