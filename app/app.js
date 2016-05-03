@@ -3,6 +3,7 @@
 
 // Depends
 var $ = require('jquery');
+require('jquery-mousewheel');
 require('malihu-custom-scrollbar-plugin')($);
 const VectorMap = require('_modules/vectormap');
 const gallery = require('_modules/gallery');

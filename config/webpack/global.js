@@ -59,7 +59,7 @@ module.exports = function(_path) {
           }
         },
         { test: /\.jade$/, loader: 'jade-loader' },
-        { test: /\.styl$/, loader: TextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader') },
+        { test: /\.styl$/, loader: TextPlugin.extract('style-loader', 'css-loader?-minimize!postcss-loader!stylus-loader') },
         { test: /\.(css|ttf|eot|woff|woff2|png|ico|jpg|jpeg|gif|svg)$/i, loaders: ['file?context=' + rootAssetPath + '&name=assets/static/[ext]/[name].[hash].[ext]'] },
       ]
     },
