@@ -12,7 +12,7 @@
   &__block
     float left
     width 630px
-    height 310px
+    max-height 310px
     padding 10px 0 0 20px
     overflow hidden
     font-size 14px
@@ -21,6 +21,9 @@
     line-height 1.2
     &_fullwidth
       width auto
+    &_left
+      float left
+      width 300px
     p
       margin-bottom 20px
       padding-right 32px
@@ -41,7 +44,7 @@
   margin-bottom 20px
   &_lined
     position relative
-    width 256px
+    width 300px
     top -14px
   &__header
     margin-bottom 10px
@@ -68,6 +71,7 @@
   color rgb(70, 83, 97)
   text-transform uppercase
   background-color #e6e7ec
+  cursor pointer
   &:after
     content: ''
     position absolute

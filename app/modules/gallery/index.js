@@ -18,12 +18,12 @@ module.exports = function(selector, params = {}) {
     ? $carouselWrap
     : $carousel;
   $carouselWrap.find('.js-gallery-prev')
-    .jcarouselControl({
-      target: '-=1'
+    .on('click', function() {
+      $carousel.jcarousel('scroll', '-=1');
     });
   $carouselWrap.find('.js-gallery-next')
-    .jcarouselControl({
-      target: '+=1'
+    .on('click', function() {
+      $carousel.jcarousel('scroll', '+=1');
     });
   return $carousel;
 };
