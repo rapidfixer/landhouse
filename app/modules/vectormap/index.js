@@ -12,18 +12,24 @@ let VectorMap = class VectorMap {
 
   constructor(elem, objects) {
     if (!elem) return;
+    this.$elem = $(elem);
     this.map = SVG(elem).size('100%', '100%');
     this.objects = [];
     objects.forEach((objParams) => {
       objects.push(new MapObject(objParams, this.map));
     });
-    this.$infoElems = $(infoArrClass).find(infoArrElemClass);
+    this.$infoArray = $(infoArrClass);
+    this.$infoElems = this.$infoArray.find(infoArrElemClass);
     this.map.on('show', (e) => {
       this.showInfo(e);
+    });
+    this.map.on('markers-to-front', () => {
+      this.moveMarkersFront();
     });
     this.map.on('click', () => {
       this.hideInfo();
     });
+    this.moveMarkersFront();
   }
 
   hideInfo() {
@@ -31,10 +37,12 @@ let VectorMap = class VectorMap {
     $oldElem.find('.js-gallery-mapinfo').jcarousel('destroy');
     $oldElem.removeClass('js-active');
     $oldElem.hide(0);
+    this.$infoArray.hide(0);
   }
 
   showInfo(e) {
     this.hideInfo();
+    this.$infoArray.show(0);
     let $newElem = this.$infoElems
       .filter('[data-info-number=' + e.detail.num + ']');
     $newElem.show(0);
@@ -42,10 +50,16 @@ let VectorMap = class VectorMap {
     $newElem.addClass('js-active');
   }
 
+  moveMarkersFront() {
+    this.map.select('.vectormap-marker').each(function() {
+      this.front();
+    });
+  }
+
   setDebug() {
     // debug info
     this.debugPointSet = false;
-    this.$debug = $('<div id="vector-map__helper"></div>').appendTo($(elem));
+    this.$debug = $('<div id="vector-map__helper"></div>').appendTo(this.$elem);
     this.map.click((e) => {
       this.debugPointSet = !this.debugPointSet;
       this.debugPointData = {

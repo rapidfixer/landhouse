@@ -7,7 +7,7 @@ const defaults = {
   posX: 0,
   posY: 0,
   polygon: '0,0 20,0 20,20 0,20',
-  circleDiameter: 32,
+  circleDiameter: 22,
   free: true,
   freeColor: '#B2D023',
   busyColor: '#DF6D52',
@@ -56,38 +56,26 @@ let MapObject = class MapObject {
       y: this.group.first().bbox().cy
     };
     // Add marker
-    let markerText = (setts.text ? setts.text : setts.num) + '';
-    if (markerText.length > 2) {
-      this.styleMarker(this.group.rect(1.8 * setts.circleDiameter, setts.circleDiameter * 0.85).radius(setts.circleDiameter / 2));
+    this.markerText = (setts.text ? setts.text : setts.num) + '';
+    if (this.markerText.length > 2) {
+      this.addMarker(this.group.rect(1.8 * setts.circleDiameter, setts.circleDiameter * 0.85).radius(setts.circleDiameter / 2));
     } else {
-      this.styleMarker(this.group.circle(setts.circleDiameter));
+      this.addMarker(this.group.circle(setts.circleDiameter));
     }
-    // add number/text
-    this.group
-      .text(markerText + '\n')
-      .font({
-        family: 'Arial',
-        size: 20,
-        'font-weight': 'bold',
-        'fill': '#fff'
-      })
-      .center(this.center.x, this.center.y);
     // set events
-    this.group.click((e) => {
-      e.stopPropagation();
-      this.parent.fire('show', {num: this.settings.num});
-    });
+    this.set = this.parent.set();
+    this.set
+      .add(this.group)
+      .add(this.marker);
+    this.set.click((e) => {this.showInfo(e)});
 
-    this.group.mouseover(() => {
-      this.borderPoly.stroke({
-        color: setts.borderColorHover
-      });
-    });
+    this.set.mouseover(() => {this.moveFront()});
 
-    this.group.mouseout(() => {
+    this.set.mouseout(() => {
       this.borderPoly.stroke({
         color: setts.borderColor
-      });
+      })
+      this.parent.fire('markers-to-front');
     });
 
     // move to point
@@ -96,8 +84,14 @@ let MapObject = class MapObject {
   }
 
   // add marker with shadow
-  styleMarker(elem) {
-    elem.center(this.center.x, this.center.y)
+  addMarker(elem) {
+    var marker = this.parent.group();
+    marker.add(elem);
+    var markerCenter = {
+      x: marker.first().bbox().cx,
+      y: marker.first().bbox().cy
+    };
+    elem.center(markerCenter.x, markerCenter.y)
       .fill({
         color: this.settings.free ? this.settings.freeColor : this.settings.busyColor
       })
@@ -109,6 +103,35 @@ let MapObject = class MapObject {
         add.blend(add.source, blur);
         this.size('180%', '180%');
       });
+    // add number/text
+    marker.text(this.markerText + '\n')
+      .font({
+        family: 'Arial',
+        size: 20,
+        'font-weight': 'bold',
+        'fill': '#fff'
+      })
+      .center(markerCenter.x, markerCenter.y);
+    marker.center(this.settings.posX + this.center.x, this.settings.posY + this.center.y);
+    marker.addClass('vectormap-marker')
+      .style({
+        cursor: 'pointer'
+      });
+    this.marker = marker;
+  }
+
+  // show info
+  showInfo(e) {
+    e.stopPropagation();
+    this.parent.fire('show', {num: this.settings.num});
+  }
+
+  moveFront() {
+    this.borderPoly.stroke({
+      color: this.settings.borderColorHover
+    });
+    this.group.front();
+    this.marker.front();
   }
 
 };
